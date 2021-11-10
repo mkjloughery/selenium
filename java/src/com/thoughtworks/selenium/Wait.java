@@ -87,7 +87,7 @@ public abstract class Wait {
   public void wait(String message, long timeoutInMilliseconds, long intervalInMilliseconds) {
     long start = System.currentTimeMillis();
     long end = start + timeoutInMilliseconds;
-    while (System.currentTimeMillis() < end) {
+    while (System.currentTimeMillis() <= end) {
       if (until()) return;
       try {
         Thread.sleep(intervalInMilliseconds);
