@@ -50,7 +50,7 @@ public abstract class Wait {
   public static final long DEFAULT_TIMEOUT = 30000L;
 
   /** The interval to pause between checking; the default is 500 milliseconds */
-  public static final long DEFAULT_INTERVAL = 500L;
+  public static final long DEFAULT_INTERVAL = 5000L;
 
   /**
    * Wait until the "until" condition returns true or time runs out.
@@ -87,7 +87,7 @@ public abstract class Wait {
   public void wait(String message, long timeoutInMilliseconds, long intervalInMilliseconds) {
     long start = System.currentTimeMillis();
     long end = start + timeoutInMilliseconds;
-    while (System.currentTimeMillis() <= end) {
+    while (System.currentTimeMillis() < end) {
       if (until()) return;
       try {
         Thread.sleep(intervalInMilliseconds);
